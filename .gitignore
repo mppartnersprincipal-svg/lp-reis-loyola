@@ -1,0 +1,10 @@
+# Insumos locais — NÃO commitar (repo é público; ver CLAUDE.md)
+Fotos dos Advogados/
+Design system para advocacia-handoff/
+Logos/
+
+# Tooling / SO
+.gstack/
+node_modules/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,235 @@
+/* ============================================================
+   Reis & Loyola — Design tokens
+   Fonte: Design system para advocacia-handoff/design-system-para-advocacia/project/tokens/
+   (colors.css + typography.css + spacing.css + animations.css concatenados)
+   Breakpoints do site (não existem no design system — definidos aqui):
+     base = mobile · 480px · 768px · 1024px  (mobile-first, min-width)
+   ============================================================ */
+
+/* ---- Colors ---- */
+:root {
+  /* Ink (preto/grafite — fundos escuros, superfície primária) */
+  --ink-950: #0B0B0C;   /* fundo da página (dark) */
+  --ink-900: #121214;   /* superfície base */
+  --ink-850: #17171A;
+  --ink-800: #1C1C20;   /* card / superfície elevada */
+  --ink-700: #26262B;   /* superfície mais elevada / hover */
+  --ink-600: #33333A;   /* borda sobre escuro */
+  --ink-500: #45454E;   /* borda forte / divisória */
+  --ink-400: #6A6A74;   /* texto desabilitado sobre escuro */
+
+  /* Gold (dourado da logo — amostrado do arquivo real) */
+  --gold-100: #F6EDCF;  /* brilho / reflexo */
+  --gold-200: #EBD79A;
+  --gold-300: #D7BD72;  /* dourado claro (média amostrada) */
+  --gold-400: #C6A15B;  /* DOURADO PRIMÁRIO da marca */
+  --gold-500: #AE8A44;
+  --gold-600: #8F6E30;  /* dourado profundo (sombra amostrada) */
+  --gold-700: #6B5121;  /* dourado escuro / borda */
+
+  /* Paper (neutros quentes — superfícies claras) */
+  --paper-50:  #FAF7F0;
+  --paper-100: #F3EEE2;
+  --paper-200: #E7DFCC;
+  --paper-300: #D3C8AF;
+
+  /* Cream / texto sobre escuro */
+  --cream-100: #F5F1E8;  /* texto primário sobre escuro */
+  --cream-300: #C9C2B4;  /* texto secundário sobre escuro */
+  --cream-500: #948D7E;  /* texto suave sobre escuro (usar só ≥18px/decorativo) */
+
+  /* Grafite / texto sobre claro */
+  --ink-text:  #1A1712;
+  --ink-text-2:#4A443B;
+  --ink-text-3:#7A7264;
+
+  /* Sinais (semânticos) */
+  --danger-500: #C0492F;
+  --danger-600: #9C3721;
+  --danger-tint: rgba(192,73,47,0.14);
+  --success-500: #4E7C59;
+  --success-tint: rgba(78,124,89,0.16);
+  --info-500: #4A6B8A;
+
+  /* Aliases semânticos — tema padrão = ESCURO */
+  --color-bg:            var(--ink-950);
+  --color-surface:       var(--ink-900);
+  --color-surface-2:     var(--ink-800);
+  --color-surface-raised:var(--ink-700);
+
+  --color-text:          var(--cream-100);
+  --color-text-secondary:var(--cream-300);
+  --color-text-muted:    var(--cream-500);
+
+  --color-accent:        var(--gold-400);
+  --color-accent-hover:  var(--gold-300);
+  --color-accent-strong: var(--gold-200);
+  --color-on-accent:     #1A1305;   /* texto sobre botão dourado */
+
+  --color-border:        var(--ink-600);
+  --color-border-strong: var(--ink-500);
+  --color-hairline-gold: rgba(198,161,91,0.28);
+
+  --color-danger:        var(--danger-500);
+  --color-success:       var(--success-500);
+
+  --gradient-gold: linear-gradient(180deg, #F6EDCF 0%, #D7BD72 34%, #C6A15B 60%, #8F6E30 100%);
+  --gradient-gold-h: linear-gradient(90deg, #8F6E30 0%, #C6A15B 28%, #F6EDCF 52%, #C6A15B 74%, #8F6E30 100%);
+  --scrim-dark: linear-gradient(180deg, rgba(11,11,12,0.35) 0%, rgba(11,11,12,0.86) 78%, rgba(11,11,12,0.97) 100%);
+}
+
+/* ---- Typography ---- */
+/* Fallbacks metricamente ajustados (size-adjust medido contra as webfonts)
+   — evitam layout shift quando Cinzel/Cormorant/Manrope terminam de carregar. */
+@font-face {
+  font-family: 'Georgia Cormorant Fallback';
+  src: local('Georgia');
+  size-adjust: 88.9%;
+}
+@font-face {
+  font-family: 'Georgia Cinzel Fallback';
+  src: local('Georgia');
+  size-adjust: 124.8%;
+}
+@font-face {
+  font-family: 'Arial Manrope Fallback';
+  src: local('Arial');
+  size-adjust: 100.7%;
+}
+:root {
+  --font-brand: 'Cinzel', 'Georgia Cinzel Fallback', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Cormorant Garamond', 'Georgia Cormorant Fallback', Georgia, serif;
+  --font-sans:  'Manrope', 'Arial Manrope Fallback', -apple-system, 'Segoe UI', system-ui, sans-serif;
+
+  --text-2xs: 0.6875rem;  /* 11px */
+  --text-xs:  0.75rem;    /* 12px */
+  --text-sm:  0.875rem;   /* 14px */
+  --text-base:1rem;       /* 16px */
+  --text-md:  1.125rem;   /* 18px */
+  --text-lg:  1.375rem;   /* 22px */
+  --text-xl:  1.75rem;    /* 28px */
+  --text-2xl: 2.25rem;    /* 36px */
+  --text-3xl: 3rem;       /* 48px */
+  --text-4xl: 4rem;       /* 64px */
+  --text-5xl: 5.25rem;    /* 84px */
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-extra:   800;
+
+  --leading-tight:  1.08;
+  --leading-snug:   1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.7;
+
+  --tracking-brand:  0.18em;
+  --tracking-label:  0.14em;
+  --tracking-wide:   0.04em;
+  --tracking-tight: -0.01em;
+}
+
+/* ---- Spacing, radius, shadow, layout, motion ---- */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10:8rem;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --border-hairline: 1px;
+  --border-thin: 1.5px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.55);
+  --shadow-gold: 0 10px 34px rgba(198,161,91,0.20);
+  --glow-gold: 0 0 0 1px rgba(198,161,91,0.35), 0 8px 30px rgba(198,161,91,0.18);
+
+  --container: 1200px;
+  --container-narrow: 820px;
+  --gutter: var(--space-6);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur: 240ms;
+  --dur-slow: 420ms;
+}
+
+/* ---- Keyframes da marca ---- */
+@keyframes rl-shimmer { to { background-position: 220% center; } }
+@keyframes rl-rise-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes rl-fade-down { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+@keyframes rl-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(198,161,91,0.30), 0 8px 30px rgba(198,161,91,0.14); }
+  50%      { box-shadow: 0 0 0 1px rgba(198,161,91,0.55), 0 10px 42px rgba(198,161,91,0.30); }
+}
+@keyframes rl-twinkle { 0%, 100% { opacity: .55; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
+
+/* ============================================================
+   Camada base do site
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--gold-500); color: #150F02; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4, p { margin: 0; }
+
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--gold-300);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  background: var(--gold-400);
+  color: var(--color-on-accent);
+  font-weight: var(--weight-bold);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus-visible { left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
