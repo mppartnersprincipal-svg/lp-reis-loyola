@@ -667,3 +667,33 @@ textarea.form__input { resize: vertical; min-height: 96px; }
   .js .reveal { opacity: 1; transform: none; }
   .btn--primary, .wa-fab, .cta-final { animation: none; }
 }
+
+/* ---- Página de texto legal (privacidade.html) ------------------------ */
+.site-header--solid {
+  background: var(--color-bg);
+  border-bottom-color: var(--ink-800);
+}
+.legal { padding: var(--space-8) 0 var(--space-9); }
+.legal__updated {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-3);
+}
+.prose { margin-top: var(--space-6); }
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-semibold);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  line-height: var(--leading-snug);
+  margin-top: var(--space-7);
+}
+.prose p, .prose li {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+.prose p { margin-top: var(--space-3); }
+.prose ul { margin-top: var(--space-3); padding-left: 1.25rem; }
+.prose li { margin-top: var(--space-2); }
+.prose li::marker { color: var(--color-accent); }
+.prose a { color: var(--color-accent-hover); text-decoration: underline; }
+.prose strong { color: var(--color-text); }

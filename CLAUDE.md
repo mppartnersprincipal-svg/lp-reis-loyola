@@ -54,6 +54,7 @@ LP - Reis e Loyola/
 | Imagens ilustrativas de seção (03/07/2026) | 3 fotos **Unsplash**: `situacao-*` (mãos/celular no escuro, banner 21:9 em #situacao), `justica-*` (Têmis com balança, banner 2:1 em #direitos, escurecida p/ tema dark), `tempo-*` (ampulheta dourada, split 4:5 em #por-que-agir). Componentes CSS `.section-visual` e `.split`; tudo `loading="lazy"` + `aspect-ratio` no CSS (sem CLS/LCP impact). Hero ficou sem foto de propósito | Higgsfield estava sem créditos p/ gerar; foto real transmite mais confiança que IA em advocacia; licença Unsplash = uso comercial livre sem atribuição. Hero sem imagem para não arriscar o LCP (Quality Score) |
 | Bio dos advogados (`lawyers.*.bio`) | **Removida** a pedido do cliente (03/07/2026) — cards exibem só foto, nome e OAB. `<p class="lawyer__bio">` retirado do HTML, campo `bio` do config.js e regra `.lawyer__bio` do CSS | Cliente pediu remoção do placeholder "[1 linha de atuação/qualificação]"; não recolocar sem novo pedido |
 | Instagram no rodapé (03/07/2026) | Link texto "Instagram" na linha `.footer__contact` (entre contato e Política de Privacidade) → `https://www.instagram.com/reiseloyolaadvogados/`. Campo `instagramUrl` no config.js + `data-cfg-href` no HTML, com a URL real também no `href` estático (funciona sem JS) | Pedido do cliente; segue o padrão config.js/data-cfg do restante do rodapé. Verificado: html-validate OK, link renderiza com `target=_blank rel=noopener`, zero erros de console, layout mobile OK |
+| Domínio + política de privacidade (10/07/2026) | Domínio escolhido pelo cliente: **`reiseloyola.com.br`** (a comprar; cogitou "reiseloyolagolpes.adv.com" e foi desaconselhado — TLD inexistente, ambiguidade "empresa+golpe", risco OAB/Google de domínio-keyword). Criada a página **`site/privacidade.html`** (LGPD + requisitos de destino do Google Ads): controlador, dados coletados, bases legais, cookies/ferramentas Google com links de opt-out, compartilhamento, retenção, direitos art. 18, encarregado. `config.js` → `privacyPolicyUrl: "privacidade.html"`; hrefs estáticos no `index.html` (form + rodapé) também apontam para ela (funciona sem JS). Canonical, `og:url` e `og:image` preenchidos com URLs absolutas de `https://reiseloyola.com.br`. CSS: componentes `.legal`/`.prose`/`.site-header--solid` no fim do `styles.css`. QA: html-validate OK nos 2 HTMLs, zero erros de console, screenshots desktop/mobile OK, links verificados via gstack browse | Google Ads exige política de privacidade acessível no destino; nicho "recuperação por golpe" é vigiado (recovery scams) — a política da categoria financeira permite escritórios de advocacia, com possível verificação de anunciante (OAB). Texto da política deve ser revisado pelos advogados antes de subir campanhas |
 | Headline/sub com filtro de valor (09/07/2026) | H1: "Perdeu mais de R$ 10.000 em um golpe bancário? A lei pode estar do seu lado." · lead: "Análise jurídica para casos com prejuízo acima de R$ 10 mil: buscamos a reparação de valores perdidos em Pix, transferência ou cartão e a anulação de dívidas…". Valor usa `R$&nbsp;10.000` (nbsp evita quebra). Hardcoded no hero do `index.html`; para mudar o corte, editar H1 + lead. `<title>`/OG **não** mencionam o valor de propósito | Pedido do cliente (09/07/2026): qualificar o lead vindo do Google Ads, filtrando casos abaixo de R$ 10 mil. Compliance OAB mantido: o valor é qualificador do prejuízo do lead (não promessa/divulgação de resultado); verbo "buscar" preservado. html-validate OK |
 
 ## ⚠️ Compliance OAB (Provimento 205/2021) — INEGOCIÁVEL
@@ -100,19 +101,19 @@ Preenchidos em 03/07/2026 (fonte: print do rodapé do site institucional atual, 
 Ainda pendente em `site/config.js` (valores `[entre colchetes]`):
 1. IDs de tracking: `gtmId`, `ga4Id`, `adsConversionId` + `adsConversionLabel`
 2. `formEndpoint` (Formspree/CRM) — vazio = envio simulado
-3. `privacyPolicyUrl` (LGPD)
-4. `practiceArea` e `coverage` (seção Sobre — o endereço confirma Goiânia, mas aguardar redação do cliente)
+3. `practiceArea` e `coverage` (seção Sobre — o endereço confirma Goiânia, mas aguardar redação do cliente)
 
-(Nomes e OAB dos advogados já preenchidos em 03/07/2026: **Dr. Daniel Reis — OAB/GO 67.135** · **Dr. Thiago Loyola — OAB/GO 68.323**. A bio foi removida a pedido do cliente — ver Decisões.)
+(Nomes e OAB dos advogados já preenchidos em 03/07/2026: **Dr. Daniel Reis — OAB/GO 67.135** · **Dr. Thiago Loyola — OAB/GO 68.323**. A bio foi removida a pedido do cliente — ver Decisões. `privacyPolicyUrl`, canonical e `og:image` resolvidos em 10/07/2026 — ver Decisões.)
 
 Fora do config.js (editar direto no `index.html`):
-5. Resposta da FAQ sobre **honorários** — "[Ajustar conforme a política do escritório.]"
-6. `<link rel="canonical">` (comentado no `<head>`) — preencher com a URL final
-7. `og:image` → trocar para URL absoluta após publicar
+4. Resposta da FAQ sobre **honorários** — "[Ajustar conforme a política do escritório.]"
+
+Fora do código:
+5. Comprar `reiseloyola.com.br` (Registro.br) e apontar para o projeto na Vercel; se o domínio final mudar, atualizar canonical/`og:url`/`og:image` no `index.html` e o canonical do `privacidade.html`
+6. Advogados revisarem o texto de `privacidade.html` antes de subir as campanhas
 
 ## Backlog / ideias futuras (não iniciadas)
 
-- Página `privacidade.html` própria (hoje só há link placeholder).
 - Self-host das fontes Google (nota no README) se o Lighthouse de produção pedir.
 - Teste A/B de headline via Google Ads (a estrutura de tracking já suporta).
 - `favicon.ico` real (ffmpeg não gera .ico; usar `npx png-to-ico` se necessário).

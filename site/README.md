@@ -11,10 +11,10 @@ HTML + CSS + JavaScript puros, sem dependências. Tema e tokens vêm do design s
 
 ## Fotos escolhidas
 
-- **Dr. Thiago Loyola:** `DSC01617.JPG` — olhar direto, expressão calma e confiante, blazer marinho, rosto nítido.
-- **Dr. Daniel Reis:** `DSC01506.JPG` — olhar direto, mãos postas, terno escuro.
-- ⚠️ As pastas de origem `Fotos dos Advogados/{Daniel,Thiago}` estão com os nomes **invertidos**: a pasta `Daniel/` contém as fotos do Dr. Thiago Loyola e a pasta `Thiago/` as do Dr. Daniel Reis. Os arquivos em `assets/img/` já usam os nomes corretos.
-- As duas foram tiradas no mesmo ambiente (luz quente de escritório, planta e persianas ao fundo), então ficam coerentes lado a lado. Ambas cortadas em 4:5 e exportadas em WebP responsivo (480px e 768px) + JPEG de fallback.
+- **Dr. Daniel Reis:** `Daniel/Foto LP.jpeg` — em pé junto à janela, gravata listrada, olhar direto (trocada em 10/07/2026).
+- **Dr. Thiago Loyola:** `Thiago/Fotos Novas/WhatsApp Image 2026-07-08 at 09.58.17.jpeg` — em pé, gravata, cortina ao fundo (trocada em 09/07/2026).
+- As pastas de origem `Fotos dos Advogados/{Daniel,Thiago}` já estão com os nomes corretos (foram fisicamente renomeadas em 03/07/2026).
+- Ambas cortadas em 4:5 e exportadas em WebP responsivo (480px e 768px) + JPEG de fallback, com `?v=3` de cache-busting nas URLs.
 
 ## Imagens ilustrativas das seções
 
@@ -39,16 +39,26 @@ Todas carregam com `loading="lazy"` e não afetam o carregamento inicial da pág
 | `ga4Id` | ID do GA4 (`G-XXXXXXXXXX`) — usado se não houver GTM |
 | `adsConversionId` / `adsConversionLabel` | Conversão do Google Ads (`AW-…` + label) |
 | `formEndpoint` | URL que recebe o POST JSON do formulário (ex.: Formspree). Vazio = envio simulado |
-| `privacyPolicyUrl` | Link da Política de Privacidade (LGPD) |
+| `privacyPolicyUrl` | Link da Política de Privacidade (LGPD) — **já preenchido**: aponta para a página própria [`privacidade.html`](privacidade.html) |
 | `instagramUrl` | Link do Instagram do escritório (rodapé) — já preenchido |
 | `address` / `contact` | Endereço e contato do rodapé |
 | `practiceArea` / `coverage` | Área de atuação e cobertura de atendimento (seção Sobre) |
 | `lawyers.daniel` / `lawyers.thiago` | OAB e 1 linha de qualificação de cada sócio (nomes já preenchidos: Dr. Daniel Reis e Dr. Thiago Loyola) |
 
-Fora do `config.js`, só há dois textos com colchetes no próprio `index.html`:
-a resposta da FAQ sobre **honorários** (ajustar conforme a política do escritório) e o
-`<link rel="canonical">` comentado no `<head>` (preencher com a URL final após publicar).
-Recomenda-se também trocar o `og:image` para a URL absoluta do domínio depois de publicado.
+Fora do `config.js`, só resta um texto com colchetes no próprio `index.html`:
+a resposta da FAQ sobre **honorários** (ajustar conforme a política do escritório).
+O `canonical`, o `og:url` e o `og:image` já apontam para `https://reiseloyola.com.br`
+(domínio escolhido em 10/07/2026) — se o domínio final mudar, atualize essas três URLs
+no `<head>` do `index.html` e o `canonical` do `privacidade.html`.
+
+## Política de Privacidade
+
+A página [`privacidade.html`](privacidade.html) cobre a LGPD e os requisitos de destino do
+Google Ads: identifica o escritório como controlador, lista os dados coletados (formulário,
+WhatsApp e cookies de medição do Google), finalidades e bases legais, links de desativação
+das ferramentas do Google, prazo de retenção, direitos do titular (art. 18) e canal de
+contato. **Recomenda-se que os advogados revisem o texto antes de subir as campanhas** e
+atualizem a data de "Última atualização" se fizerem ajustes.
 
 ## Rastreamento de conversão
 
@@ -81,7 +91,7 @@ A pasta `site/` é 100% estática e autocontida — funciona em qualquer hospeda
 - **Netlify / Vercel / Cloudflare Pages:** arraste a pasta `site/` (ou aponte o deploy para ela). HTTPS e CDN automáticos.
 - **Hospedagem tradicional (cPanel etc.):** envie o conteúdo de `site/` para a raiz pública (`public_html`).
 
-Checklist pós-publicação: preencher `config.js` → descomentar/preencher o canonical → tornar o `og:image` absoluto → testar o botão de WhatsApp num celular → conferir a conversão no Google Ads (modo de pré-visualização do GTM ajuda).
+Checklist pós-publicação: preencher os IDs de tracking e o `formEndpoint` no `config.js` → conferir se o domínio final é mesmo `reiseloyola.com.br` (canonical/OG já apontam para ele) → testar o botão de WhatsApp num celular → abrir `privacidade.html` no domínio final → conferir a conversão no Google Ads (modo de pré-visualização do GTM ajuda).
 
 ## Performance e acessibilidade (medidos via Lighthouse local)
 

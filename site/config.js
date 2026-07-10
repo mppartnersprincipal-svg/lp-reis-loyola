@@ -30,7 +30,7 @@ window.RL_CONFIG = {
   formEndpoint: "",
 
   /* --- Dados do escritório --------------------------------- */
-  privacyPolicyUrl: "[URL_POLITICA_PRIVACIDADE]",
+  privacyPolicyUrl: "privacidade.html",   // página própria incluída no site
   instagramUrl: "https://www.instagram.com/reiseloyolaadvogados/",
   address: "Av. Portugal, 1148, Quadra L29, Lote 1E, Sala C2501 — Setor Marista, Goiânia/GO — CEP 74150-030",
   contact: "(62) 99833-5893 · contato@reiseloyola.adv.br · Seg. a Sex., das 8h às 18h",
