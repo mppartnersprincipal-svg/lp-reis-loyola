@@ -69,8 +69,23 @@ Os eventos são disparados sempre, mesmo sem IDs configurados (dá para testar n
 
 Duas formas de ativar:
 
-1. **Via GTM (recomendado):** preencha `gtmId` e crie no Tag Manager gatilhos de evento personalizado para `whatsapp_click` e `form_submit`, apontando para a tag de conversão do Google Ads. Se quiser cobrir visitantes sem JavaScript, descomente o `<noscript>` do GTM no início do `<body>` e substitua `GTM_ID`.
-2. **Direto (sem GTM):** preencha `ga4Id` e/ou `adsConversionId` + `adsConversionLabel`. O site injeta o gtag e dispara a conversão (`send_to: ID/LABEL`) nos dois eventos automaticamente.
+1. **Via GTM (recomendado — JÁ ATIVO):** o container **`GTM-K5WRPXNB`** está preenchido no `config.js` e o `<noscript>` do GTM já está ativo no `index.html` e na `privacidade.html`. O que falta é configurar DENTRO do Tag Manager: gatilhos de evento personalizado para `whatsapp_click` e `form_submit` apontando para as tags de conversão do Google Ads e/ou GA4 (passo a passo abaixo).
+2. **Direto (sem GTM):** preencha `ga4Id` e/ou `adsConversionId` + `adsConversionLabel`. O site injeta o gtag e dispara a conversão (`send_to: ID/LABEL`) nos dois eventos automaticamente. *(Com o GTM ativo, deixe esses campos como placeholders — senão a conversão dispara em duplicidade.)*
+
+### Configuração dentro do Tag Manager (fazer uma vez, em tagmanager.google.com)
+
+No container `GTM-K5WRPXNB`:
+
+1. **Variável** (Variáveis → Nova → Variável da camada de dados): nome `cta_location`, nome da variável na camada de dados `cta_location`. Identifica qual botão de WhatsApp foi clicado (`header`, `hero`, `cta_final`, `form_success`, `fab`).
+2. **Acionadores** (Acionadores → Novo → Evento personalizado):
+   - `Evento — whatsapp_click`, nome do evento `whatsapp_click`
+   - `Evento — form_submit`, nome do evento `form_submit`
+3. **Tags:**
+   - **Tag do Google (GA4):** com o ID de métricas `G-XXXXXXXXXX` da propriedade GA4, acionador *All Pages / Inicialização*. Depois, duas tags "Evento do GA4" (nomes `whatsapp_click` e `form_submit`, com o parâmetro `cta_location` = `{{cta_location}}` na primeira), cada uma com seu acionador do passo 2.
+   - **Google Ads — Vinculador de conversões (Conversion Linker):** acionador *All Pages*. Obrigatória para a conversão do Ads funcionar.
+   - **Google Ads — Acompanhamento de conversões:** crie no Google Ads duas ações de conversão ("Contato via WhatsApp" e "Envio de formulário", categoria Lead), copie ID (`AW-…`) e rótulo de cada uma, e crie duas tags no GTM, cada uma com o acionador correspondente do passo 2. A de WhatsApp costuma ser a conversão principal da campanha; a de formulário pode ficar como secundária.
+4. **Testar** com *Visualizar* (Preview/Tag Assistant): clicar num CTA de WhatsApp e enviar o formulário → conferir se os eventos aparecem e as tags disparam.
+5. **Publicar** o container (botão *Enviar*). Sem publicar, nada dispara para visitantes reais.
 
 ## Formulário
 

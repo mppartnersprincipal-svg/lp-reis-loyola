@@ -18,7 +18,7 @@ window.RL_CONFIG = {
   },
 
   /* --- Rastreamento (Google) ------------------------------ */
-  gtmId: "[GTM_ID]",                          // ex.: "GTM-XXXXXXX" (prioridade sobre GA4)
+  gtmId: "GTM-K5WRPXNB",                      // Google Tag Manager (prioridade sobre GA4)
   ga4Id: "[GA4_ID]",                          // ex.: "G-XXXXXXXXXX"
   adsConversionId: "[GADS_CONVERSION_ID]",    // ex.: "AW-123456789"
   adsConversionLabel: "[GADS_CONVERSION_LABEL]",
