@@ -12,7 +12,7 @@ HTML + CSS + JavaScript puros, sem dependências. Tema e tokens vêm do design s
 ## Fotos escolhidas
 
 - **Dr. Daniel Reis:** `Daniel/Foto LP.jpeg` — em pé junto à janela, gravata listrada, olhar direto (trocada em 10/07/2026).
-- **Dr. Thiago Loyola:** `Thiago/Fotos Novas/WhatsApp Image 2026-07-08 at 09.58.17.jpeg` — em pé, gravata, cortina ao fundo (trocada em 09/07/2026).
+- **Dr. Tiago Loyola:** `Thiago/Fotos Novas/WhatsApp Image 2026-07-08 at 09.58.17.jpeg` — em pé, gravata, cortina ao fundo (trocada em 09/07/2026). (A pasta de origem e os arquivos `thiago-*` mantêm a grafia antiga com "h"; o nome correto é **Tiago**, sem H.)
 - As pastas de origem `Fotos dos Advogados/{Daniel,Thiago}` já estão com os nomes corretos (foram fisicamente renomeadas em 03/07/2026).
 - Ambas cortadas em 4:5 e exportadas em WebP responsivo (480px e 768px) + JPEG de fallback, com `?v=3` de cache-busting nas URLs.
 
@@ -42,8 +42,8 @@ Todas carregam com `loading="lazy"` e não afetam o carregamento inicial da pág
 | `privacyPolicyUrl` | Link da Política de Privacidade (LGPD) — **já preenchido**: aponta para a página própria [`privacidade.html`](privacidade.html) |
 | `instagramUrl` | Link do Instagram do escritório (rodapé) — já preenchido |
 | `address` / `contact` | Endereço e contato do rodapé |
-| `practiceArea` / `coverage` | Área de atuação e cobertura de atendimento (seção Sobre) |
-| `lawyers.daniel` / `lawyers.thiago` | OAB e 1 linha de qualificação de cada sócio (nomes já preenchidos: Dr. Daniel Reis e Dr. Thiago Loyola) |
+| `practiceArea` / `coverage` | Área de atuação e cobertura de atendimento (seção Sobre) — **já preenchidos**: direito bancário · presencial em Goiânia (GO) e online em todo o Brasil |
+| `lawyers.daniel` / `lawyers.thiago` | OAB e nome de cada sócio (já preenchidos: Dr. Daniel Reis e Dr. Tiago Loyola) |
 
 Fora do `config.js`, só resta um texto com colchetes no próprio `index.html`:
 a resposta da FAQ sobre **honorários** (ajustar conforme a política do escritório).

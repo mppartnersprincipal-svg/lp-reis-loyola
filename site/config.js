@@ -34,8 +34,8 @@ window.RL_CONFIG = {
   instagramUrl: "https://www.instagram.com/reiseloyolaadvogados/",
   address: "Av. Portugal, 1148, Quadra L29, Lote 1E, Sala C2501 — Setor Marista, Goiânia/GO — CEP 74150-030",
   contact: "(62) 99833-5893 · contato@reiseloyola.adv.br · Seg. a Sex., das 8h às 18h",
-  practiceArea: "[direito do consumidor / bancário]",
-  coverage: "[presencial em [cidade] e online em todo o Brasil]",
+  practiceArea: "direito bancário",
+  coverage: "presencial em Goiânia (GO) e online em todo o Brasil",
 
   lawyers: {
     daniel: {
@@ -43,7 +43,7 @@ window.RL_CONFIG = {
       oab: "OAB/GO 67.135",
     },
     thiago: {
-      name: "Dr. Thiago Loyola",
+      name: "Dr. Tiago Loyola",
       oab: "OAB/GO 68.323",
     },
   },
